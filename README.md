@@ -1,5 +1,6 @@
 Horizon
 =======
+Zia Siddique & Josh Jones
 
 GitHub for the Horizon project
 
