@@ -6,8 +6,6 @@ public class InputController : MonoBehaviour {
 
 	public FlightController flightController;
 
-
-
 	// Use this for initialization
 	void Start () {
 	}
