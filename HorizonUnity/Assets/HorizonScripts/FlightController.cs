@@ -36,7 +36,7 @@ public class FlightController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		SetThrustPercentage (100);
+		//SetThrustPercentage (100);
 	}
 
 	// Increase Thrust
@@ -48,6 +48,12 @@ public class FlightController : MonoBehaviour {
 			thrust = 0;
 		else 
 			thrust = maxThrust * (percentage / 100);
+	}
+
+	public void AddThrustPercentage (float percentage)
+	{
+		float newPercentage = (thrust / maxThrust) + (percentage / 100);
+		thrust = maxThrust * newPercentage;
 	}
 
 	// Add a specific value to the thrust
