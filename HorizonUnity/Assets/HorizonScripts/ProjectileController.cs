@@ -5,7 +5,7 @@ using System.Collections;
 public class ProjectileController : MonoBehaviour {
 
 	public float projectileSpeed;
-	public int life;
+	public int range;
 
 	// Use this for initialization
 	void Start () {
@@ -14,8 +14,10 @@ public class ProjectileController : MonoBehaviour {
 	
 	// Update
 	void FixedUpdate () {
-		life--;
-		if (life <= 0) {
+
+		// Destroy projectile after a while
+		range--;
+		if (range <= 0) {
 			Destroy (gameObject);
 		}
 	}

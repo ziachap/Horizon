@@ -1,21 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent (typeof (FlightController))]
+[RequireComponent (typeof (ShipController))]
 public class NeutralAI : MonoBehaviour {
 
-	FlightController flight;
+	ShipController ship;
 
 	// Use this for initialization
 	void Start () {
-		flight = gameObject.GetComponent<FlightController> ();
+		ship = gameObject.GetComponent<ShipController> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		flight.Yaw (0.005f);
-		flight.SetThrustPercentage (51);
-		flight.Pitch (0.002f);
+		ship.flight.Yaw (0.005f);
+		ship.flight.SetThrustPercentage (51);
+		ship.flight.Pitch (0.002f);
 		//flight.Roll (-0.02f);
 	}
 }
