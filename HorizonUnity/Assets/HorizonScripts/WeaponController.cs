@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//[RequireComponent (typeof (Rigidbody))]
+[RequireComponent (typeof (AudioSource))]
 public class WeaponController : MonoBehaviour {
 
 	public Transform shipTransform;
 	public Vector3 relativePosition;
-	public Rigidbody projectile;
+	public ProjectileController projectile;
 	public int coolDown;
+
+	AudioSource audioSource;
 
 	Vector3 target;
 	bool firing;
@@ -17,11 +19,13 @@ public class WeaponController : MonoBehaviour {
 	void Start () {
 		target = Vector3.zero;
 		this.transform.parent = shipTransform;
+		audioSource = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update () {
 		// Fire if engaged
 		if (firing && currentCoolDown < 0) {
+			audioSource.Play();
 			GameObject.Instantiate (projectile, transform.position, transform.rotation);
 			currentCoolDown = coolDown;
 		}

@@ -5,7 +5,7 @@ public class AsteroidField : MonoBehaviour {
 
 	public float density;
 	public int range;
-	public Rigidbody asteroid;
+	public Asteroid asteroid;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,10 @@ public class AsteroidField : MonoBehaviour {
 			                                              Random.Range (-range/2,range/2), 
 			                                              Random.Range (-range/2,range/2)),
 			    Random.rotation);
+			Random.seed = i * System.DateTime.Now.Millisecond + new System.Random().Next() + (int)(1000*Time.time);
+			float size = Random.Range (20,90);
+			asteroid.size = size;
+			asteroid.Initialize();
 		}
 	}
 	

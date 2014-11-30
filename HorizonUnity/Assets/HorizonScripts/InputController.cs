@@ -8,7 +8,6 @@ public class InputController : MonoBehaviour {
 	FlightController flight;
 	public WeaponController leftWeapon;
 	public WeaponController rightWeapon;
-	public bool active;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +50,7 @@ public class InputController : MonoBehaviour {
 			Vector3 aimTarget;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if (Physics.Raycast (ray, out hit, 5000f)) {
+			if (Physics.Raycast (ray, out hit, 5000f) && (hit.point - flight.transform.position).magnitude > 20) {
 				aimTarget = hit.point;
 			}
 			else aimTarget = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100000));
