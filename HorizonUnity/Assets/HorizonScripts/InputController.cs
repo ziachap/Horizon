@@ -48,7 +48,13 @@ public class InputController : MonoBehaviour {
 
 			// Weapon Aim Input
 			//float zTarget = (flight.rigidbody.position + (flight.rigidbody.transform.up.normalized*1000)).z;
-			Vector3 aimTarget = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10000));
+			Vector3 aimTarget;
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast (ray, out hit, 5000f)) {
+				aimTarget = hit.point;
+			}
+			else aimTarget = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100000));
 			rightWeapon.SetTarget(aimTarget);
 			leftWeapon.SetTarget(aimTarget);
 
