@@ -52,6 +52,11 @@ public class ShipController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.E))
 						Damage (3);
 	}
+	void OnCollisionEnter (Collision col)
+	{
+		// Play a thud sound and damage this ship
+		Damage(rigidbody.velocity.magnitude*2);
+	}
 
 	void ManageShield () {
 		// Start off cooldown timer

@@ -6,6 +6,8 @@ public class ThirdPersonShipCamera : MonoBehaviour {
 	public Transform target;
 	public float cameraDistance;
 	public float cameraHeight;
+
+
 	
 	// Use this for initialization
 	void Start () {
@@ -32,5 +34,10 @@ public class ThirdPersonShipCamera : MonoBehaviour {
 		Vector3 targetPos = target.position + (target.up * -cameraDistance) 
 			+ (Vector3.Cross(target.transform.up, target.right) * -cameraHeight);
 		this.transform.position = Vector3.Slerp(camera.transform.position, targetPos, 1f);
+	}
+
+	public Camera GetCamera()
+	{
+		return gameObject.GetComponent<Camera> ();
 	}
 }

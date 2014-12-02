@@ -29,4 +29,9 @@ public class CockpitCamera : MonoBehaviour {
 			+ (Vector3.Cross(target.transform.up, target.right) * -cameraHeight);
 		this.transform.position = Vector3.Slerp(camera.transform.position, targetPos, 1f);
 	}
+
+	public Camera GetCamera()
+	{
+		return gameObject.GetComponent<Camera> ();
+	}
 }

@@ -7,11 +7,14 @@ public class HUDShake : MonoBehaviour {
 	public float speed;
 	public FlightController ship;
 
+	Vector3 startPosition;
+
 	int x;
 
 	// Use this for initialization
 	void Start () {
 		x = 0;
+		startPosition = transform.position;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +26,7 @@ public class HUDShake : MonoBehaviour {
 		float newAmount = percentage * amount;
 		float newSpeed = percentage * speed;
 
-		this.transform.position = new Vector3 (9.442081f + (newAmount * Mathf.Sin (newSpeed * x)), 6.837051f + (newAmount * Mathf.Cos ((newSpeed + 0.5f)*x)), -10.89323f);
+		this.transform.position = new Vector3 (startPosition.x + (newAmount * Mathf.Sin (newSpeed * x)), startPosition.y + (newAmount * Mathf.Cos ((newSpeed + 0.5f)*x)), startPosition.z);
 		x++;
 	}
 }

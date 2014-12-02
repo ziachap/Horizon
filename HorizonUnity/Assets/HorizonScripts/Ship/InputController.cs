@@ -6,6 +6,7 @@ public class InputController : MonoBehaviour {
 
 	// Public Variables
 	ShipController ship;
+	public CameraController cameraController;
 
 	// Use this for initialization
 	void Start () {
@@ -45,12 +46,12 @@ public class InputController : MonoBehaviour {
 			// Weapon Aim Input
 			//float zTarget = (flight.rigidbody.position + (flight.rigidbody.transform.up.normalized*1000)).z;
 			Vector3 aimTarget;
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			Ray ray = cameraController.activeCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, 5000f) && (hit.point - ship.flight.transform.position).magnitude > 8) {
 				aimTarget = hit.point;
 			}
-			else aimTarget = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100000));
+		else aimTarget = cameraController.activeCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100000));
 			ship.rightWeapon.SetTarget(aimTarget);
 			ship.leftWeapon.SetTarget(aimTarget);
 
