@@ -12,6 +12,6 @@ public class ReticleRightText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.guiText.text = "V // " + (int)ship.flight.GetThrust() + " // " + (int)ship.flight.maxThrust;
+		this.guiText.text = "T // " + (int)ship.flight.GetThrust() + " // " + (int)ship.flight.maxThrust;
 	}
 }

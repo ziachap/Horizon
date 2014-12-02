@@ -47,7 +47,7 @@ public class InputController : MonoBehaviour {
 			Vector3 aimTarget;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if (Physics.Raycast (ray, out hit, 5000f) && (hit.point - ship.flight.transform.position).magnitude > 10) {
+			if (Physics.Raycast (ray, out hit, 5000f) && (hit.point - ship.flight.transform.position).magnitude > 8) {
 				aimTarget = hit.point;
 			}
 			else aimTarget = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 100000));

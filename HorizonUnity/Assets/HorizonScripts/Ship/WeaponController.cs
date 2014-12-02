@@ -7,7 +7,7 @@ public class WeaponController : MonoBehaviour {
 	public Transform shipTransform;
 	public Vector3 relativePosition;
 	public ProjectileController projectile;
-	public int coolDown;
+	public int coolDown = 0;
 
 	AudioSource audioSource;
 
@@ -24,12 +24,12 @@ public class WeaponController : MonoBehaviour {
 
 	void Update () {
 		// Fire if engaged
-		if (firing && currentCoolDown < 0) {
+		if (firing && currentCoolDown <= 0) {
 			audioSource.Play();
 			GameObject.Instantiate (projectile, transform.position, transform.rotation);
 			currentCoolDown = coolDown;
 		}
-		currentCoolDown--;
+		if(currentCoolDown > 0) currentCoolDown--;
 	}
 
 	// Update
@@ -52,5 +52,9 @@ public class WeaponController : MonoBehaviour {
 	public void SetTarget (Vector3 target) {
 		this.target = target;
 		//
+	}
+
+	public int getCoolDown() {
+		return currentCoolDown;
 	}
 }
