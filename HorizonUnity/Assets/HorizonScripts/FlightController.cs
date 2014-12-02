@@ -36,7 +36,10 @@ public class FlightController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		//SetThrustPercentage (100);
+		//Update thruster volume/pitch
+		float thrustPercentage = thrust / maxThrust;
+		gameObject.GetComponent<AudioSource> ().volume = thrustPercentage;
+		gameObject.GetComponent<AudioSource> ().pitch = 0.5f + (thrustPercentage/2);
 	}
 
 	// Increase Thrust
@@ -66,6 +69,11 @@ public class FlightController : MonoBehaviour {
 	public void SetThrust (float amount)
 	{
 		thrust = amount;
+	}
+	// Get thrust value
+	public float GetThrust ()
+	{
+		return thrust;
 	}
 
 	// Pitch rotation
