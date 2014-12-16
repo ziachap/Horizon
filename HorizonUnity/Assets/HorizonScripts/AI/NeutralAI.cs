@@ -13,7 +13,7 @@ public class NeutralAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ship.flight.Yaw (0.005f);
+		ship.flight.Yaw (0.009f);
 		ship.flight.SetThrustPercentage (20);
 		ship.flight.Pitch (0.002f);
 		//flight.Roll (-0.02f);
