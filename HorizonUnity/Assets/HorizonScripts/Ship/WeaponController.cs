@@ -37,7 +37,7 @@ public class WeaponController : MonoBehaviour {
 		// Update rotation
 		//transform.LookAt (target);
 		Vector3 newUp = Vector3.Cross (Vector3.Cross (target - transform.position, shipTransform.up),target - transform.position);
-		transform.rotation = Quaternion.LookRotation (target - transform.position, newUp);
+		transform.rotation = Quaternion.LookRotation (target - transform.position, shipTransform.up);
 
 		// Update position
 		//transform.localPosition = relativePosition;

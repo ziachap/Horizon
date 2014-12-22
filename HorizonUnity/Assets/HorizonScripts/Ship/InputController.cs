@@ -29,10 +29,10 @@ public class InputController : MonoBehaviour {
 									
 			// Roll input
 			if (Input.GetAxis ("Roll") > 0) {
-				ship.flight.Roll (-8);
+				ship.flight.Roll (-7);
 			}
 			if (Input.GetAxis ("Roll") < 0) {
-				ship.flight.Roll (8);
+				ship.flight.Roll (7);
 			}
 									
 			// Yaw Input

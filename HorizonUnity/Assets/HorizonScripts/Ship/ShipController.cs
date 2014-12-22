@@ -36,27 +36,27 @@ public class ShipController : MonoBehaviour {
 		}
 	}
 
-	// Use this for initialization
 	void Start () {
 		shield = maxShield;
 		hull = maxHull;
 	}
 
-	void FixedUpdate () {
+	void Update () {
 		ManageShield ();
 		ManageHull ();
-	}
 
-	// Update is called once per frame
-	void Update () {
 		if (Input.GetKey (KeyCode.E))
 						Damage (3);
 	}
+
+	// COLLISION MANAGEMENT
 	void OnCollisionEnter (Collision col)
 	{
 		// Play a thud sound and damage this ship
 		Damage(rigidbody.velocity.magnitude*2);
 	}
+
+	// SHIELD/HULL MANAGEMENT
 
 	void ManageShield () {
 		// Start off cooldown timer
@@ -91,6 +91,8 @@ public class ShipController : MonoBehaviour {
 		}
 	}
 
+	// Shield/Hull GetSets
+
 	public float GetShield () {
 		return shield;
 	}
@@ -106,6 +108,25 @@ public class ShipController : MonoBehaviour {
 	public void SetHull (float value) {
 		hull = value;
 	}
+
+	// WEAPON CONTROLS
+
+	public void AimAllWeapons (Vector3 target) {
+		leftWeapon.SetTarget(target);
+		rightWeapon.SetTarget(target);
+	}
+
+	public void EngageAllWeapons () {
+		leftWeapon.EngageFire ();
+		rightWeapon.EngageFire ();
+	}
+
+	public void DisengageAllWeapons () {
+		leftWeapon.DisengageFire ();
+		rightWeapon.DisengageFire ();
+	}
+
+	// DESTRUCTION
 
 	void Destruct(){
 		GameObject.Instantiate (deathParticle, transform.position, transform.rotation);
