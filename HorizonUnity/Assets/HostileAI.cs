@@ -25,7 +25,8 @@ public class HostileAI : MonoBehaviour {
 	void TailTarget () {
 		Vector3 behindPlayer = target.position - (target.forward.normalized * tailDistance);
 		baseAI.SetFlightTarget (behindPlayer);
-		baseAI.SetAimTarget (target.position);
+		Vector3 predictiveOffset = target.forward.normalized * (target.rigidbody.velocity.magnitude/2); // Aim ahead
+		baseAI.SetAimTarget (target.position + predictiveOffset);
 	}
 
 	void EvadeTarget () {

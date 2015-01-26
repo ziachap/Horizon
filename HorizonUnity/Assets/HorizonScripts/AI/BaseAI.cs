@@ -106,7 +106,7 @@ public class BaseAI : MonoBehaviour {
 			Vector3 aimOffsetVector = Vector3.Cross (ship.transform.up, toTarget).normalized * aimOffset * 1f;
 			aimNum++;
 
-			Vector3 aimPoint = aimTarget + aimOffsetVector;
+			Vector3 aimPoint = aimTarget;// + aimOffsetVector;
 
 			// Aim weapons at aim point
 			ship.AimAllWeapons (aimPoint);
